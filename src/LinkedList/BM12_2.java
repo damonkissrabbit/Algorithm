@@ -1,4 +1,4 @@
-/*
+package LinkedList;/*
  * public class ListNode {
  *   int val;
  *   ListNode next = null;
@@ -7,9 +7,6 @@
  *   }
  * }
  */
-
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class BM12_2 {
     /**

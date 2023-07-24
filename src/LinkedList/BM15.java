@@ -1,4 +1,6 @@
-import java.util.*;
+package LinkedList;
+
+import java.util.HashSet;
 
 /*
  * public class ListNode {
@@ -10,7 +12,7 @@ import java.util.*;
  * }
  */
 
-public class BM16 {
+public class BM15 {
     /**
      * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
      *
@@ -20,24 +22,18 @@ public class BM16 {
     public static ListNode deleteDuplicates(ListNode head) {
         if (head == null)
             return null;
-        HashMap<Integer, Integer> timesMap = new HashMap<>();
-        Stack<ListNode> stack = new Stack<>();
+        ListNode pre = null;
+        ListNode dummyNode = head;
+        HashSet<Integer> numbers = new HashSet<>();
         while (head != null) {
-            if (timesMap.containsKey(head.val)) {
-                timesMap.put(head.val, timesMap.get(head.val) + 1);
+            ListNode next = head.next;
+            if (numbers.contains(head.val)){
+                pre.next = head.next;
             } else {
-                timesMap.put(head.val, 1);
+                numbers.add(head.val);
+                pre = head;
             }
-            stack.push(head);
-            head = head.next;
-        }
-        ListNode dummyNode = null;
-        while (!stack.isEmpty()) {
-            ListNode node = stack.pop();
-            if (timesMap.get(node.val) == 1) {
-                node.next = dummyNode;
-                dummyNode = node;
-            }
+            head = next;
         }
         return dummyNode;
     }
@@ -53,9 +49,9 @@ public class BM16 {
         node2.next = node3;
         node3.next = node4;
         node4.next = node5;
-        node2.next = null;
+//        node1.next = null;
         ListNode result = deleteDuplicates(node1);
-        while (result != null) {
+        while(result != null){
             System.out.println(result.val);
             result = result.next;
         }

@@ -1,4 +1,6 @@
-import java.util.*;
+package LinkedList;
+
+import java.util.ArrayList;
 
 /*
  * public class ListNode {

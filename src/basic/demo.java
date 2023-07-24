@@ -1,4 +1,4 @@
-import java.util.*;
+package basic;
 
 
 class ListNode {

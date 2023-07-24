@@ -1,4 +1,6 @@
-import java.util.*;
+package LinkedList;
+
+import java.util.HashSet;
 
 /**
  * Definition for singly-linked list.
