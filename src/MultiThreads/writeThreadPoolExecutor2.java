@@ -17,7 +17,7 @@ class ThreadPoolExecutorTest {
 
     public void createThreadPool() throws InterruptedException {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
-                2, 4, 3, TimeUnit.SECONDS,
+                3, 4, 3, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<Runnable>(4),
                 new ThreadPoolExecutor.DiscardOldestPolicy()
         );
@@ -39,6 +39,9 @@ class ThreadPoolExecutorTest {
             TaskThreadPool taskThreadPool = new TaskThreadPool(i);
             System.out.println("put i: " + i);
             threadPoolExecutor.execute(taskThreadPool);
+            System.out.println("***");
+            System.out.println(threadPoolExecutor.getCorePoolSize());
+            System.out.println("***");
         }
     }
 
@@ -59,7 +62,8 @@ class TaskThreadPool implements Runnable {
     public void run() {
         System.out.println(Thread.currentThread() + " index: " + index);
         try {
-            Thread.sleep(3000);
+            TimeUnit.MICROSECONDS.sleep(3000);
+//            Thread.sleep(3000);
         } catch (Exception e) {
             e.printStackTrace();
         }
